@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+
+  "name": "Chrome Wakapi",
+  "description": "Chrome extension for automatic time tracking and metrics generated from your browsing activity",
+  "options_page": "options.html",
+  "version": "0.0.1",
+
+  "options_ui": {
+    "page": "options.html"
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "favicon-32x32.png"
+  },
+  "icons": {
+    "128": "favicon-192x192.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+      "js": ["js/vendor.js", "js/content_script.js"],
+      "css": []
+    }
+  ],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["favicon-192x192.png", "favicon-32x32.png"],
+      "matches": []
+    }
+  ]
+}
